@@ -1,0 +1,154 @@
+
+INSERT INTO
+item(item_id,item_type,item_name,item_price,item_description)
+VALUES
+('I001','Hot Bevarage','Masala Chai',0.50,'Black Tea In Milk With Aromatic Herbs and Spices'),
+('I002','Cold Bevarage','Green Smoothie',1.50,'Banana, Spinach, Coconut Water  & Variety Of Fruits'),
+('I003','Snack','Fish Patty',0.65,'Patty with fish and curry'),
+('I004','Cake','Cheesecake',2.5,'A slice of cheese cake with wallnuts'),
+('I005','Dessert','Chocolate Ice Cream',3,'4.00 Scoops of choclate ice cream'),
+('I006','Hot Bevarage','Caffe Latte',3.25,'Creamy Latte Topped With Frothy Foam'),
+('I007','Cold Bevarage','Cold Coffee',3.00,'Creamy Cold Coffee With  a Frothy Layer');
+
+INSERT INTO
+orders(order_id,Order_date,item_id)
+VALUES
+('OR001','2022-12-12','I005'),
+('OR002','2022-12-12','I002'),
+('OR003','2022-12-13','I005'),
+('OR004','2022-12-13','I003'),
+('OR005','2022-12-14','I001'),
+('OR006','2022-12-14','I002'),
+('OR007','2022-12-14','I005'),
+('OR008','2022-12-16','I007'),
+('OR009','2022-12-16','I004'),
+('OR010','2022-12-16','I004');
+
+
+INSERT INTO
+payment(Payment_date,receipt_no)
+VALUES
+('2022-12-12',0001),
+('2022-12-12',0002),
+('2022-12-13',0003),
+('2022-12-13',0004),
+('2022-12-14',0005),
+('2022-12-14',0006),
+('2022-12-14',0007),
+('2022-12-16',0008),
+('2022-12-16',0009),
+('2022-12-16',0010);
+
+INSERT INTO
+employee(Fname,Mint,Lname,Address,Employee_id)
+VALUES
+('John','Lewis','Kenny','No.34,Harrold Road, Arizona','E0001'),
+('James','Harley','Shawn','No.64,Robert Road, Arizona','E0002'),
+('Mary','Sally','Kate','No.39,Harrold Road, Arizona','E0003'),
+('Damian','Jewis','Jr','No.67,Samuel Road, Arizona','E0004'),
+('Johnny','Liam','Tyler','No.54,Galle Road, Arizona','E0005'),
+('Ron','Harry','Kane','No.39,New street Road, Arizona','E0006'),
+('Mike','Lohan','Jackson','No.324,Harly Road, Arizona','E0007'),
+('Brooke','Lewis','Hamda','No.453,Eliat Road, Arizona','E0008'),
+('Jerry','Coms','Kety','No.354,Harrold Road, Arizona','E0009'),
+('Simon','Harry','Josh','No.634,Robert Road, Arizona','E0010'),
+('Jake','Dillion','Danis','No.329,Harrold Road, Arizona','E0011'),
+('Paul','Mabma','Fury','No.6,Samuel Road, Arizona','E0012'),
+('Tyson','Deontey','Conor','No.58,Galle Road, Arizona','E0013'),
+('Khabib','Lester','Faze','No.32,New street Road, Arizona','E0014'),
+('Hashim','Lohan','Jr','No.304,Harly Road, Arizona','E0015'),
+('Joe','Lenny','Hamda','No.3,Eliat Road, Arizona','E0016');
+
+INSERT INTO
+cash_on_delivery(Cash_receipt,receipt_no)
+VALUES
+('CR001',0001),
+('CR002',0003),
+('CR003',0005),
+('CR004',0007),
+('CR005',0009);
+
+
+INSERT INTO
+online_payment(Online_receipt,receipt_no)
+VALUES
+('OR001',0002),
+('OR002',0004),
+('OR003',0006),
+('OR004',0008),
+('OR005',0010);
+
+INSERT INTO
+delivery_staff(Drivers_license,Employee_id,order_id)
+VALUES
+('DL20012345','E0001','OR001'),
+('DL20012346','E0004','OR003'),
+('DL20012347','E0007','OR005'),
+('DL20012348','E0010','OR007'),
+('DL20012349','E0013','OR009');
+
+INSERT INTO
+steward(Trustworthiness,Employee_id,order_id)
+VALUES
+(8.2,'E0002','OR002'),
+(8.8,'E0005','OR004'),
+(9.2,'E0008','OR006'),
+(8.4,'E0011','OR008'),
+(7.2,'E0014','OR010');
+
+INSERT INTO
+manager(Experience,Employee_id,SuperviseEmployee_id)
+VALUES
+('Bsc(Hons) Management','E0003','E0003'),
+('Bsc(Hons) Software Eng','E0006','E0006'),
+('Bsc(Hons) Management','E0009','E0009'),
+('Bsc(Hons) Accounting','E0012','E0012'),
+('Bsc(Hons) Finance','E0015','E0015');
+
+INSERT INTO
+employee_phone_no(Phone_No,Employee_id)
+VALUES
+(0778266154,'E0001'),
+(0778896154,'E0002'),
+(0772746154,'E0003'),
+(0778266154,'E0004'),
+(0778264582,'E0005'),
+(0778263444,'E0006'),
+(0724344154,'E0007'),
+(0757443154,'E0008'),
+(0797865154,'E0009'),
+(0213443154,'E0010'),
+(0774568154,'E0011'),
+(0778083154,'E0012'),
+(0778545154,'E0013'),
+(0778266154,'E0014'),
+(0778266154,'E0015'),
+(0778266154,'E0016');
+
+INSERT INTO
+customer(Delivery_address,Email,Date,order_id,receipt_no)
+VALUES
+('No.21,Harrold Road, Arizona','henrycavill@gmail.com','2022-12-12','OR001',0001),
+('No.394,James Road, Arizona','benaffleck@gmail.com','2022-12-12','OR002',0002),
+('No.30,Old Road, Arizona','galgaddot@gmail.com','2022-12-13','OR003',0003),
+('No.344,Marriot Road, Arizona','harley@gmail.com','2022-12-13','OR004',0004),
+('No.94,Colombo Road, Arizona','willsmith@gmail.com','2022-12-14','OR005',0005),
+('No.64,Matara Road, Arizona','johnorton@gmail.com','2022-12-14','OR006',0006),
+('No.356,Heskey Road, Arizona','henrymark@gmail.com','2022-12-14','OR007',0007),
+('No.55,Harrow Road, Arizona','slayguy@gmail.com','2022-12-16','OR008',0008),
+('No.374,Burlin Road, Arizona','themanhi@gmail.com','2022-12-16','OR009',0009),
+('No.34/7,Rrold Road, Arizona','batman123@gmail.com','2022-12-16','OR010',0010);
+
+INSERT INTO
+customer_phone_no(Customer_Phone_no,Email)
+VALUES
+(0780536154,'henrycavill@gmail.com'),
+(0713345154,'benaffleck@gmail.com'),
+(0567646154,'galgaddot@gmail.com'),
+(0778266154,'harley@gmail.com'),
+(0779807875,'willsmith@gmail.com'),
+(0776754322,'johnorton@gmail.com'),
+(0725423752,'henrymark@gmail.com'),
+(0901237875,'slayguy@gmail.com'),
+(0823782524,'themanhi@gmail.com'),
+(0525252523,'batman123@gmail.com');

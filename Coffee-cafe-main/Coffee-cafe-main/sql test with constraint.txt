@@ -1,0 +1,109 @@
+CREATE TABLE Item
+(
+  item_id VARCHAR(5) NOT NULL,
+  item_type VARCHAR(20) NOT NULL,
+  item_name VARCHAR(30) NOT NULL,
+  item_price NUMERIC(4,2) NOT NULL,
+  Item_description VARCHAR(200) NOT NULL,
+  CONSTRAINT i_iiid_pk PRIMARY KEY (item_id)
+);
+
+CREATE TABLE Orders
+(
+  order_id VARCHAR(5) NOT NULL,
+  Order_date DATE NOT NULL,
+  item_id VARCHAR(5) NOT NULL,
+  CONSTRAINT o_oid_pk PRIMARY KEY (order_id),
+  CONSTRAINT o_oiid_fk FOREIGN KEY (item_id) REFERENCES Item(item_id)
+);
+
+CREATE TABLE Payment
+(
+  Payment_date DATE NOT NULL,
+  receipt_no INT NOT NULL,
+  CONSTRAINT p_prn_pk PRIMARY KEY (receipt_no)
+);
+
+CREATE TABLE Employee
+(
+  Fname VARCHAR(30) NOT NULL,
+  Mint VARCHAR(30) NOT NULL,
+  Lname VARCHAR(30) NOT NULL,
+  Address VARCHAR(100) NOT NULL,
+  Employee_id VARCHAR(5) NOT NULL,
+  CONSTRAINT e_eeid_pk PRIMARY KEY (Employee_id)
+);
+
+CREATE TABLE Cash_on_delivery
+(
+  Cash_receipt INT NOT NULL,
+  receipt_no INT NOT NULL,
+  CONSTRAINT cod_codrn_pk PRIMARY KEY (receipt_no),
+  CONSTRAINT cod_codrn_fk FOREIGN KEY (receipt_no) REFERENCES Payment(receipt_no)
+);
+
+CREATE TABLE online_payment
+(
+  Online_receipt INT NOT NULL,
+  receipt_no INT NOT NULL,
+  CONSTRAINT op_oprn_pk PRIMARY KEY (receipt_no),
+  CONSTRAINT op_oprn_fk FOREIGN KEY (receipt_no) REFERENCES Payment(receipt_no)
+);
+
+CREATE TABLE Delivery_staff
+(
+  Drivers_license VARCHAR(20) NOT NULL,
+  Employee_id VARCHAR(5) NOT NULL,
+  order_id VARCHAR(5) NOT NULL,
+  CONSTRAINT ds_dseid_pk PRIMARY KEY (Employee_id),
+  CONSTRAINT ds_dseid_fk FOREIGN KEY (Employee_id) REFERENCES Employee(Employee_id),
+  CONSTRAINT ds_dsoid_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+);
+
+CREATE TABLE Steward
+(
+  Trustworthiness FLOAT NOT NULL,
+  Employee_id VARCHAR(5) NOT NULL,
+  order_id VARCHAR(5) NOT NULL,
+  CONSTRAINT s_seid_pk PRIMARY KEY (Employee_id),
+  CONSTRAINT s_seid_fk FOREIGN KEY (Employee_id) REFERENCES Employee(Employee_id),
+  CONSTRAINT s_soid_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+);
+
+CREATE TABLE Manager
+(
+  Experience VARCHAR(50) NOT NULL,
+  Employee_id VARCHAR(5) NOT NULL,
+  SuperviseEmployee_id VARCHAR(5) NOT NULL,
+  CONSTRAINT m_meid_pk PRIMARY KEY (Employee_id),
+  CONSTRAINT m_meid_fk FOREIGN KEY (Employee_id) REFERENCES Employee(Employee_id),
+  CONSTRAINT m_mseid_fk FOREIGN KEY (SuperviseEmployee_id) REFERENCES Employee(Employee_id)
+);
+
+CREATE TABLE Employee_Phone_No
+(
+  Phone_No INT NOT NULL,
+  Employee_id VARCHAR(5) NOT NULL,
+  CONSTRAINT epn_epnoneid_pk PRIMARY KEY (Phone_No, Employee_id),
+  CONSTRAINT epn_epneid_fk FOREIGN KEY (Employee_id) REFERENCES Employee(Employee_id)
+);
+
+CREATE TABLE Customer
+(
+  Delivery_address INT NOT NULL,
+  Email INT NOT NULL,
+  Date INT NOT NULL,
+  order_id VARCHAR(5) NOT NULL,
+  receipt_no INT NOT NULL,
+  CONSTRAINT c_ce_pk PRIMARY KEY (Email),
+  CONSTRAINT c_coid_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+  CONSTRAINT c_crn_fk FOREIGN KEY (receipt_no) REFERENCES Payment(receipt_no)
+);
+
+CREATE TABLE Customer_Phone_no
+(
+  Customer_Phone_no INT NOT NULL,
+  Email INT NOT NULL,
+  CONSTRAINT cpn_cpncpne_pk PRIMARY KEY (Customer_Phone_no, Email),
+  CONSTRAINT cpn_cpne_fk FOREIGN KEY (Email) REFERENCES Customer(Email)
+);
